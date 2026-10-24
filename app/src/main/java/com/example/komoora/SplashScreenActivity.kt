@@ -27,7 +27,7 @@ class SplashScreenActivity : AppCompatActivity() {
             val isLogin = sharedPref.getBoolean("isLogin", false)
 
             val target = if (isLogin) {
-                HomePage::class.java
+                BaseActivity::class.java
             } else {
                 LandingPage::class.java
             }

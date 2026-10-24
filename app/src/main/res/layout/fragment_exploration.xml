@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:clipToPadding="false"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header gambar -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/labuan_bajo"
+                    android:contentDescription="Pemandangan Labuan Bajo" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#22001D35" />
+
+                <TextView
+                    android:id="@+id/btnBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginTop="24dp"
+                    android:padding="8dp"
+                    android:text="‹  Back"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp" />
+
+                <!-- Search -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="64dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="60dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:background="@drawable/bg_home_search"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="20dp">
+
+                    <ImageView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_category_circle"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_search"
+                        android:contentDescription="Search"
+                        app:tint="#FFFFFF" />
+
+                    <EditText
+                        android:id="@+id/etSearchDestination"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:layout_marginStart="12dp"
+                        android:background="@android:color/transparent"
+                        android:hint="Where To?"
+                        android:inputType="text"
+                        android:paddingStart="4dp"
+                        android:singleLine="true"
+                        android:textColor="#333333"
+                        android:textColorHint="#999999"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+            </FrameLayout>
+
+            <!-- Panel putih -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-36dp"
+                android:background="@drawable/bg_home_panel"
+                android:orientation="vertical"
+                android:paddingTop="40dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingBottom="24dp">
+
+                <!-- Kategori -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:fillViewport="false">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="52dp"
+                            android:minWidth="92dp"
+                            android:text="All"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:textColor="#FFFFFF"
+                            app:cornerRadius="32dp"
+                            app:backgroundTint="#0D3A84" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnBeach"
+                            android:layout_width="wrap_content"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="10dp"
+                            android:minWidth="112dp"
+                            android:text="Beach"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:textColor="#5578A8"
+                            app:cornerRadius="32dp"
+                            app:backgroundTint="#DCDCDC"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnIsland"
+                            android:layout_width="wrap_content"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="10dp"
+                            android:minWidth="112dp"
+                            android:text="Island"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:textColor="#5578A8"
+                            app:cornerRadius="32dp"
+                            app:backgroundTint="#DCDCDC" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnVillage"
+                            android:layout_width="wrap_content"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="10dp"
+                            android:minWidth="112dp"
+                            android:text="Village"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:textColor="#5578A8"
+                            app:cornerRadius="32dp"
+                            app:backgroundTint="#DCDCDC" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnHotel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="52dp"
+                            android:layout_marginStart="10dp"
+                            android:minWidth="100dp"
+                            android:text="Hotel"
+                            android:textAllCaps="false"
+                            android:textSize="16sp"
+                            android:textColor="#5578A8"
+                            app:cornerRadius="32dp"
+                            app:backgroundTint="#DCDCDC" />
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginBottom="8dp"
+                    android:text="Explore Destinations"
+                    android:textColor="#0D3A84"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <!-- Semua kartu destinasi didefinisikan langsung di XML -->
+                <GridLayout
+                    android:id="@+id/gridDestinations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2"
+                    android:alignmentMode="alignMargins"
+                    android:useDefaultMargins="false">
+
+                    <!-- Komodo Island -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardKomodoIsland"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp">
+
+                                <ImageView
+                                    android:id="@+id/imgKomodoIsland"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/recommend_komodo"
+                                    android:scaleType="centerCrop"
+                                    android:contentDescription="Komodo Island" />
+
+                                <ImageButton
+                                    android:id="@+id/btnFavoriteKomodo"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="top|end"
+                                    android:layout_margin="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_heart"
+                                    android:padding="8dp"
+                                    android:contentDescription="Favorite Komodo Island"
+                                    app:tint="#D9D9D9" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="112dp"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/tvKomodoName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Komodo Island"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:maxLines="2" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Manggarai Barat"
+                                    android:textColor="#7091BE"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:text="⭐ 4.8 (1.2k)"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Pink Beach -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardPinkBeach"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp">
+
+                                <ImageView
+                                    android:id="@+id/imgPinkBeach"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/pink_beach"
+                                    android:scaleType="centerCrop"
+                                    android:contentDescription="Pink Beach" />
+
+                                <ImageButton
+                                    android:id="@+id/btnFavoritePinkBeach"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="top|end"
+                                    android:layout_margin="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_heart"
+                                    android:padding="8dp"
+                                    android:contentDescription="Favorite Pink Beach"
+                                    app:tint="#D9D9D9" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="112dp"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/tvPinkBeachName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Pink Beach"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:maxLines="2" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Manggarai Barat"
+                                    android:textColor="#7091BE"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:text="⭐ 4.8 (1.2k)"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Oenesu Waterfall -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardOenesuWaterfall"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp">
+
+                                <ImageView
+                                    android:id="@+id/imgOenesuWaterfall"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/recommend_waterfall"
+                                    android:scaleType="centerCrop"
+                                    android:contentDescription="Oenesu Waterfall" />
+
+                                <ImageButton
+                                    android:id="@+id/btnFavoriteWaterfall"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="top|end"
+                                    android:layout_margin="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_heart"
+                                    android:padding="8dp"
+                                    android:contentDescription="Favorite Oenesu Waterfall"
+                                    app:tint="#D9D9D9" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="112dp"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/tvWaterfallName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Oenesu Waterfall"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:maxLines="2" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Manggarai Barat"
+                                    android:textColor="#7091BE"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:text="⭐ 4.8 (1.2k)"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Waerebo Village -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardWaereboVillage"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp">
+
+                                <ImageView
+                                    android:id="@+id/imgWaereboVillage"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/recommend_cave"
+                                    android:scaleType="centerCrop"
+                                    android:contentDescription="Waerebo Village" />
+
+                                <ImageButton
+                                    android:id="@+id/btnFavoriteWaerebo"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="top|end"
+                                    android:layout_margin="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_heart"
+                                    android:padding="8dp"
+                                    android:contentDescription="Favorite Waerebo Village"
+                                    app:tint="#D9D9D9" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="112dp"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/tvWaereboName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Waerebo Village"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:maxLines="2" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Manggarai Barat"
+                                    android:textColor="#7091BE"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:text="⭐ 4.8 (1.2k)"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Waikuri Lagoon -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardWaikuriLagoon"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp">
+
+                                <ImageView
+                                    android:id="@+id/imgWaikuriLagoon"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/labuan_bajo"
+                                    android:scaleType="centerCrop"
+                                    android:contentDescription="Waikuri Lagoon" />
+
+                                <ImageButton
+                                    android:id="@+id/btnFavoriteWaikuri"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="top|end"
+                                    android:layout_margin="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_heart"
+                                    android:padding="8dp"
+                                    android:contentDescription="Favorite Waikuri Lagoon"
+                                    app:tint="#D9D9D9" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="112dp"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/tvWaikuriName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Waikuri Lagoon"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:maxLines="2" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Manggarai Barat"
+                                    android:textColor="#7091BE"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:text="⭐ 4.8 (1.2k)"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <!-- Bolok Crystal Cave -->
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardBolokCrystalCave"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="6dp"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="6dp"
+                        app:cardUseCompatPadding="false">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="150dp">
+
+                                <ImageView
+                                    android:id="@+id/imgBolokCrystalCave"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:src="@drawable/recommend_cave"
+                                    android:scaleType="centerCrop"
+                                    android:contentDescription="Bolok Crystal Cave" />
+
+                                <ImageButton
+                                    android:id="@+id/btnFavoriteCave"
+                                    android:layout_width="44dp"
+                                    android:layout_height="44dp"
+                                    android:layout_gravity="top|end"
+                                    android:layout_margin="8dp"
+                                    android:background="@android:color/transparent"
+                                    android:src="@drawable/ic_heart"
+                                    android:padding="8dp"
+                                    android:contentDescription="Favorite Bolok Crystal Cave"
+                                    app:tint="#D9D9D9" />
+                            </FrameLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="112dp"
+                                android:orientation="vertical"
+                                android:padding="10dp">
+
+                                <TextView
+                                    android:id="@+id/tvCaveName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Bolok Crystal Cave"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="17sp"
+                                    android:textStyle="bold"
+                                    android:maxLines="2" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Manggarai Barat"
+                                    android:textColor="#7091BE"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="6dp"
+                                    android:text="⭐ 4.8 (1.2k)"
+                                    android:textColor="#0D3A84"
+                                    android:textSize="15sp"
+                                    android:textStyle="bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                </GridLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="KomooraPopupMenu" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:textColor">#0D3A84</item>
+    </style>
+</resources>

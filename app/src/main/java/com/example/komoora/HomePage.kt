@@ -1,4 +1,3 @@
-
 package com.example.komoora
 
 import android.content.Intent
@@ -19,7 +18,7 @@ class HomePage : AppCompatActivity() {
         binding = ActivityHomePageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Toolbar
+        // Mengatur Toolbar
         setSupportActionBar(binding.toolbar)
 
         supportActionBar?.apply {
@@ -27,7 +26,7 @@ class HomePage : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(false)
         }
 
-        // Membuka DetailActivity ketika card Labuan Bajo ditekan
+        // Membuka DetailPage ketika card Labuan Bajo ditekan
         binding.cardLabuanBajo.setOnClickListener {
             val intent = Intent(this, DetailPage::class.java)
             startActivity(intent)
@@ -52,7 +51,7 @@ class HomePage : AppCompatActivity() {
         }
     }
 
-    // Dialog konfirmasi Logout
+    // Menampilkan dialog konfirmasi Logout
     private fun tampilkanDialogLogout() {
         AlertDialog.Builder(this)
             .setTitle("Logout")
@@ -71,7 +70,6 @@ class HomePage : AppCompatActivity() {
 
                 // Kembali ke LoginPage
                 val intent = Intent(this, LoginPage::class.java)
-
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or
                         Intent.FLAG_ACTIVITY_CLEAR_TASK
 
@@ -79,6 +77,7 @@ class HomePage : AppCompatActivity() {
                 finish()
             }
             .setNegativeButton("Tidak") { dialog, _ ->
+                // Tetap berada di Homepage
                 dialog.dismiss()
             }
             .show()
