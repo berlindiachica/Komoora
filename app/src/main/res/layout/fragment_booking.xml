@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#EEF6FC">
+
+    <!-- Background gambar wisata -->
+    <ImageView
+        android:id="@+id/imgBookingBackground"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:contentDescription="Pemandangan Labuan Bajo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_home_labuanbajo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Overlay agar tulisan putih mudah dibaca -->
+    <View
+        android:id="@+id/bookingOverlay"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:background="#550D3A84"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Area scroll -->
+    <ScrollView
+        android:id="@+id/bookingScrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="false"
+        android:scrollbars="vertical"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Judul di atas gambar -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Book Your Trip"
+                    android:textColor="#FFFFFF"
+                    android:textSize="28sp"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Discover your next adventure in NTT"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/inter"/>
+
+            </LinearLayout>
+
+            <!-- Panel putih rounded -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="0dp"
+                android:background="@drawable/bg_booking_panel"
+                android:elevation="6dp"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingTop="24dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="24dp">
+
+                <!-- Judul destination -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Destination List"
+                    android:textColor="#0D3A84"
+                    android:textSize="21sp"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"/>
+
+                <!-- ListView -->
+                <ListView
+                    android:id="@+id/listSimpleDestinations"
+                    android:layout_width="match_parent"
+                    android:layout_height="184dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/bg_destination_list"
+                    android:divider="#E1E8F0"
+                    android:dividerHeight="1dp"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:fontFamily="@font/inter"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false" />
+
+                <!-- Judul paket wisata -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Tour Packages"
+                    android:textColor="#0D3A84"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textSize="21sp"
+                    android:textStyle="bold" />
+
+                <!-- ListView Custom Adapter -->
+                <ListView
+                    android:id="@+id/listTourPackages"
+                    android:layout_width="match_parent"
+                    android:layout_height="570dp"
+                    android:layout_marginTop="12dp"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="10dp"
+                    android:fontFamily="@font/inter"
+                    android:background="@android:color/transparent"
+                    android:clipToPadding="false"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

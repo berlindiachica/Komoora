@@ -55,14 +55,13 @@ class HomeFragment : Fragment() {
 
         // Membuka halaman DetailPage
         binding.cardLabuanBajo.setOnClickListener {
-            val intent = Intent(
+            DestinationNavigation.openDetail(
                 requireContext(),
-                DetailPage::class.java
+                "labuan_bajo"
             )
-            startActivity(intent)
         }
 
-        // Tombol favorit Labuan Bajo
+        // Tombol favorit
         binding.btnFavoriteLabuanBajo.setOnClickListener {
             isFavorite = !isFavorite
 

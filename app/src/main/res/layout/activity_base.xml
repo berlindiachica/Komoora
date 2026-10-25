@@ -18,6 +18,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#FFFFFF"
+        android:fontFamily="@font/inter"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="#0D3A84"
         app:itemTextColor="#0D3A84"

@@ -26,7 +26,7 @@
         android:layout_height="430dp"
         android:contentDescription="Pemandangan Labuan Bajo"
         android:scaleType="centerCrop"
-        android:src="@drawable/labuan_bajo"
+        android:src="@drawable/recommend_labuan_bajo"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -327,7 +327,7 @@
                         android:layout_height="match_parent"
                         android:contentDescription="Destinasi Labuan Bajo"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/labuan_bajo" />
+                        android:src="@drawable/recommend_labuan_bajo" />
 
                     <View
                         android:layout_width="match_parent"

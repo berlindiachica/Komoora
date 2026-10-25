@@ -26,7 +26,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/labuan_bajo"
+                    android:src="@drawable/recommend_labuan_bajo"
                     android:contentDescription="Pemandangan Labuan Bajo" />
 
                 <View
@@ -34,17 +34,6 @@
                     android:layout_height="match_parent"
                     android:background="#22001D35" />
 
-                <TextView
-                    android:id="@+id/btnBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="top|start"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="24dp"
-                    android:padding="8dp"
-                    android:text="‹  Back"
-                    android:textColor="#FFFFFF"
-                    android:textSize="20sp" />
 
                 <!-- Search -->
                 <LinearLayout
@@ -58,6 +47,7 @@
                     android:orientation="horizontal"
                     android:background="@drawable/bg_home_search"
                     android:paddingStart="14dp"
+                    android:fontFamily="@font/inter"
                     android:paddingEnd="20dp">
 
                     <ImageView
@@ -118,6 +108,7 @@
                             android:layout_height="52dp"
                             android:minWidth="92dp"
                             android:text="All"
+                            android:fontFamily="@font/inter"
                             android:textAllCaps="false"
                             android:textSize="16sp"
                             android:textColor="#FFFFFF"
@@ -133,6 +124,7 @@
                             android:text="Beach"
                             android:textAllCaps="false"
                             android:textSize="16sp"
+                            android:fontFamily="@font/inter"
                             android:textColor="#5578A8"
                             app:cornerRadius="32dp"
                             app:backgroundTint="#DCDCDC"/>
@@ -143,6 +135,7 @@
                             android:layout_height="52dp"
                             android:layout_marginStart="10dp"
                             android:minWidth="112dp"
+                            android:fontFamily="@font/inter"
                             android:text="Island"
                             android:textAllCaps="false"
                             android:textSize="16sp"
@@ -158,6 +151,7 @@
                             android:minWidth="112dp"
                             android:text="Village"
                             android:textAllCaps="false"
+                            android:fontFamily="@font/inter"
                             android:textSize="16sp"
                             android:textColor="#5578A8"
                             app:cornerRadius="32dp"
@@ -169,6 +163,7 @@
                             android:layout_height="52dp"
                             android:layout_marginStart="10dp"
                             android:minWidth="100dp"
+                            android:fontFamily="@font/inter"
                             android:text="Hotel"
                             android:textAllCaps="false"
                             android:textSize="16sp"
@@ -186,6 +181,7 @@
                     android:layout_marginBottom="8dp"
                     android:text="Explore Destinations"
                     android:textColor="#0D3A84"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
@@ -252,6 +248,7 @@
                                     android:text="Komodo Island"
                                     android:textColor="#0D3A84"
                                     android:textSize="17sp"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:textStyle="bold"
                                     android:maxLines="2" />
 
@@ -259,6 +256,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Manggarai Barat"
+                                    android:fontFamily="@font/inter"
                                     android:textColor="#7091BE"
                                     android:textSize="13sp" />
 
@@ -267,6 +265,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="6dp"
                                     android:text="⭐ 4.8 (1.2k)"
+                                    android:fontFamily="@font/inter"
                                     android:textColor="#0D3A84"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
@@ -319,6 +318,7 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="112dp"
                                 android:orientation="vertical"
+                                android:fontFamily="@font/inter"
                                 android:padding="10dp">
 
                                 <TextView
@@ -327,6 +327,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Pink Beach"
                                     android:textColor="#0D3A84"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:textSize="17sp"
                                     android:textStyle="bold"
                                     android:maxLines="2" />
@@ -335,6 +336,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Manggarai Barat"
+                                    android:fontFamily="@font/inter"
                                     android:textColor="#7091BE"
                                     android:textSize="13sp" />
 
@@ -405,13 +407,15 @@
                                     android:textColor="#0D3A84"
                                     android:textSize="17sp"
                                     android:textStyle="bold"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:maxLines="2" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Manggarai Barat"
+                                    android:text="Kupang"
                                     android:textColor="#7091BE"
+                                    android:fontFamily="@font/inter"
                                     android:textSize="13sp" />
 
                                 <TextView
@@ -421,6 +425,7 @@
                                     android:text="⭐ 4.8 (1.2k)"
                                     android:textColor="#0D3A84"
                                     android:textSize="15sp"
+                                    android:fontFamily="@font/inter"
                                     android:textStyle="bold" />
                             </LinearLayout>
                         </LinearLayout>
@@ -450,7 +455,7 @@
                                     android:id="@+id/imgWaereboVillage"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/recommend_cave"
+                                    android:src="@drawable/recommend_waerebo"
                                     android:scaleType="centerCrop"
                                     android:contentDescription="Waerebo Village" />
 
@@ -479,6 +484,7 @@
                                     android:layout_height="wrap_content"
                                     android:text="Waerebo Village"
                                     android:textColor="#0D3A84"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:textSize="17sp"
                                     android:textStyle="bold"
                                     android:maxLines="2" />
@@ -486,8 +492,9 @@
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Manggarai Barat"
+                                    android:text="Manggarai"
                                     android:textColor="#7091BE"
+                                    android:fontFamily="@font/inter"
                                     android:textSize="13sp" />
 
                                 <TextView
@@ -495,6 +502,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="6dp"
                                     android:text="⭐ 4.8 (1.2k)"
+                                    android:fontFamily="@font/inter"
                                     android:textColor="#0D3A84"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
@@ -502,9 +510,9 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
-                    <!-- Waikuri Lagoon -->
+                    <!-- labuan bajoo -->
                     <androidx.cardview.widget.CardView
-                        android:id="@+id/cardWaikuriLagoon"
+                        android:id="@+id/cardLabuanBajo"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_columnWeight="1"
@@ -523,15 +531,15 @@
                                 android:layout_height="150dp">
 
                                 <ImageView
-                                    android:id="@+id/imgWaikuriLagoon"
+                                    android:id="@+id/imgLabuanBajo"
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
-                                    android:src="@drawable/labuan_bajo"
+                                    android:src="@drawable/recommend_labuan_bajo"
                                     android:scaleType="centerCrop"
-                                    android:contentDescription="Waikuri Lagoon" />
+                                    android:contentDescription="Labuan Lagoon" />
 
                                 <ImageButton
-                                    android:id="@+id/btnFavoriteWaikuri"
+                                    android:id="@+id/btnFavoriteLabuanBajo"
                                     android:layout_width="44dp"
                                     android:layout_height="44dp"
                                     android:layout_gravity="top|end"
@@ -539,7 +547,7 @@
                                     android:background="@android:color/transparent"
                                     android:src="@drawable/ic_heart"
                                     android:padding="8dp"
-                                    android:contentDescription="Favorite Waikuri Lagoon"
+                                    android:contentDescription="Favorite Labuan Bajo"
                                     app:tint="#D9D9D9" />
                             </FrameLayout>
 
@@ -550,12 +558,13 @@
                                 android:padding="10dp">
 
                                 <TextView
-                                    android:id="@+id/tvWaikuriName"
+                                    android:id="@+id/tvLabuanBajoName"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Waikuri Lagoon"
+                                    android:text="Labuan Bajo Lagoon"
                                     android:textColor="#0D3A84"
                                     android:textSize="17sp"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:textStyle="bold"
                                     android:maxLines="2" />
 
@@ -563,6 +572,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:text="Manggarai Barat"
+                                    android:fontFamily="@font/inter"
                                     android:textColor="#7091BE"
                                     android:textSize="13sp" />
 
@@ -570,6 +580,7 @@
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:layout_marginTop="6dp"
+                                    android:fontFamily="@font/inter"
                                     android:text="⭐ 4.8 (1.2k)"
                                     android:textColor="#0D3A84"
                                     android:textSize="15sp"
@@ -632,14 +643,16 @@
                                     android:text="Bolok Crystal Cave"
                                     android:textColor="#0D3A84"
                                     android:textSize="17sp"
+                                    android:fontFamily="@font/montserrat_bold"
                                     android:textStyle="bold"
                                     android:maxLines="2" />
 
                                 <TextView
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:text="Manggarai Barat"
+                                    android:text="Kupang Barat"
                                     android:textColor="#7091BE"
+                                    android:fontFamily="@font/inter"
                                     android:textSize="13sp" />
 
                                 <TextView
@@ -648,6 +661,7 @@
                                     android:layout_marginTop="6dp"
                                     android:text="⭐ 4.8 (1.2k)"
                                     android:textColor="#0D3A84"
+                                    android:fontFamily="@font/inter"
                                     android:textSize="15sp"
                                     android:textStyle="bold" />
                             </LinearLayout>

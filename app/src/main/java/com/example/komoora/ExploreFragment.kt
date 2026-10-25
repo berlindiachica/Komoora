@@ -40,12 +40,6 @@ class ExploreFragment : Fragment() {
     ) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Tombol kembali ke Home
-        binding.btnBack.setOnClickListener {
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.fragment_container, HomeFragment())
-                .commit()
-        }
 
         // Filter kategori
         binding.btnAll.setOnClickListener {
@@ -100,10 +94,40 @@ class ExploreFragment : Fragment() {
         setupFavoriteButton(binding.btnFavoritePinkBeach)
         setupFavoriteButton(binding.btnFavoriteWaterfall)
         setupFavoriteButton(binding.btnFavoriteWaerebo)
-        setupFavoriteButton(binding.btnFavoriteWaikuri)
+        setupFavoriteButton(binding.btnFavoriteLabuanBajo)
         setupFavoriteButton(binding.btnFavoriteCave)
 
         selectCategory("All")
+
+        // Kartu Komodo Island
+        binding.cardKomodoIsland.setOnClickListener {
+            DestinationNavigation.openDetail(requireContext(), "komodo_island")
+        }
+
+        // Kartu Pink Beach
+        binding.cardPinkBeach.setOnClickListener {
+            DestinationNavigation.openDetail(requireContext(), "pink_beach")
+        }
+
+        // Kartu Oenesu Waterfall
+        binding.cardOenesuWaterfall.setOnClickListener {
+            DestinationNavigation.openDetail(requireContext(), "oenesu_waterfall")
+        }
+
+        // Kartu Waerebo Village
+        binding.cardWaereboVillage.setOnClickListener {
+            DestinationNavigation.openDetail(requireContext(), "waerebo_village")
+        }
+
+        // Kartu Labuan Bajo
+        binding.cardLabuanBajo.setOnClickListener {
+            DestinationNavigation.openDetail(requireContext(), "labuan_bajo")
+        }
+
+        // Kartu Bolok Crystal Cave
+        binding.cardBolokCrystalCave.setOnClickListener {
+            DestinationNavigation.openDetail(requireContext(), "bolok_crystal_cave")
+        }
     }
 
     private fun selectCategory(category: String) {
@@ -158,16 +182,16 @@ class ExploreFragment : Fragment() {
                     ("Pink Beach Manggarai Barat" to "Beach"),
 
             binding.cardOenesuWaterfall to
-                    ("Oenesu Waterfall Manggarai Barat" to "Nature"),
+                    ("Oenesu Waterfall Kupang " to "Nature"),
 
             binding.cardWaereboVillage to
                     ("Waerebo Village Manggarai Barat" to "Village"),
 
-            binding.cardWaikuriLagoon to
+            binding.cardLabuanBajo to
                     ("Waikuri Lagoon Manggarai Barat" to "Nature"),
 
             binding.cardBolokCrystalCave to
-                    ("Bolok Crystal Cave Manggarai Barat" to "Nature")
+                    ("Bolok Crystal Cave Kupang Barat" to "Nature")
         )
 
         destinations.forEach { (card, destinationInfo) ->

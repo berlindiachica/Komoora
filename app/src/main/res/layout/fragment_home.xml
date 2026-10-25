@@ -14,10 +14,10 @@
         <ImageView
             android:id="@+id/imgHomeBackground"
             android:layout_width="0dp"
-            android:layout_height="430dp"
+            android:layout_height="500dp"
             android:contentDescription="Pemandangan Labuan Bajo"
             android:scaleType="centerCrop"
-            android:src="@drawable/labuan_bajo"
+            android:src="@drawable/bg_home_labuanbajo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
@@ -29,6 +29,7 @@
             android:background="#55001D35"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            android:fontFamily="@font/inter"
             app:layout_constraintEnd_toEndOf="parent" />
 
         <!-- Toolbar -->
@@ -68,6 +69,7 @@
             android:text="Discover Cool&#10;Places"
             android:textColor="#FFFFFF"
             android:textSize="36sp"
+            android:fontFamily="@font/montserrat_bold"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -84,6 +86,7 @@
             android:background="@drawable/bg_home_search"
             android:gravity="center_vertical"
             android:orientation="horizontal"
+            android:fontFamily="@font/inter"
             android:paddingStart="14dp"
             android:paddingEnd="20dp"
             app:layout_constraintStart_toStartOf="parent"
@@ -182,6 +185,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Nature"
+                            android:fontFamily="@font/inter"
                             android:textColor="#0D3A84"
                             android:textSize="12sp"
                             android:singleLine="true" />
@@ -211,6 +215,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Hotel"
+                            android:fontFamily="@font/inter"
                             android:textColor="#0D3A84"
                             android:textSize="12sp"
                             android:singleLine="true" />
@@ -242,6 +247,7 @@
                             android:text="Culinary"
                             android:textColor="#0D3A84"
                             android:textSize="12sp"
+                            android:fontFamily="@font/inter"
                             android:singleLine="true" />
                     </LinearLayout>
 
@@ -269,6 +275,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:text="Culture"
+                            android:fontFamily="@font/inter"
                             android:textColor="#0D3A84"
                             android:textSize="12sp"
                             android:singleLine="true" />
@@ -300,6 +307,7 @@
                             android:text="Souvenir"
                             android:textColor="#0D3A84"
                             android:textSize="12sp"
+                            android:fontFamily="@font/inter"
                             android:singleLine="true" />
                     </LinearLayout>
 
@@ -321,6 +329,7 @@
                         android:layout_weight="1"
                         android:text="Popular Destination"
                         android:textColor="#0D3A84"
+                        android:fontFamily="@font/montserrat_bold"
                         android:textSize="24sp"
                         android:textStyle="bold" />
 
@@ -352,7 +361,7 @@
                             android:layout_height="match_parent"
                             android:contentDescription="Destinasi Labuan Bajo"
                             android:scaleType="centerCrop"
-                            android:src="@drawable/labuan_bajo" />
+                            android:src="@drawable/recommend_labuan_bajo" />
 
                         <View
                             android:layout_width="match_parent"
@@ -384,6 +393,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Labuan Bajo"
                                 android:textColor="#FFFFFF"
+                                android:fontFamily="@font/montserrat_bold"
                                 android:textSize="25sp"
                                 android:textStyle="bold" />
 
@@ -392,6 +402,7 @@
                                 android:layout_height="wrap_content"
                                 android:text="Manggarai Barat"
                                 android:textColor="#FFFFFF"
+                                android:fontFamily="@font/inter"
                                 android:textSize="16sp" />
 
                             <TextView
@@ -399,6 +410,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="end"
                                 android:text="★  4.8 (1.2k)"
+                                android:fontFamily="@font/inter"
                                 android:textColor="#FFFFFF"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
@@ -416,6 +428,7 @@
                     android:layout_marginTop="34dp"
                     android:text="Our Recommendation"
                     android:textColor="#0D3A84"
+                    android:fontFamily="@font/montserrat_bold"
                     android:textSize="24sp"
                     android:textStyle="bold" />
 
@@ -467,6 +480,7 @@
                                         android:layout_height="wrap_content"
                                         android:text="Komodo Island"
                                         android:textColor="#FFFFFF"
+                                        android:fontFamily="@font/inter"
                                         android:textSize="18sp"
                                         android:textStyle="bold" />
 
@@ -475,6 +489,7 @@
                                         android:layout_height="wrap_content"
                                         android:text="Manggarai Barat  ★ 4.8"
                                         android:textColor="#FFFFFF"
+                                        android:fontFamily="@font/inter"
                                         android:textSize="12sp" />
 
                                 </LinearLayout>
@@ -519,6 +534,7 @@
                                         android:layout_height="wrap_content"
                                         android:text="Bolok Crystal Cave"
                                         android:textColor="#FFFFFF"
+                                        android:fontFamily="@font/montserrat_bold"
                                         android:textSize="18sp"
                                         android:textStyle="bold" />
 
@@ -527,6 +543,7 @@
                                         android:layout_height="wrap_content"
                                         android:text="Kupang Barat  ★ 4.8"
                                         android:textColor="#FFFFFF"
+                                        android:fontFamily="@font/inter"
                                         android:textSize="12sp" />
 
                                 </LinearLayout>
@@ -535,7 +552,7 @@
 
                         </androidx.cardview.widget.CardView>
 
-                        <!-- Air Terjun -->
+                        <!-- oenesu waterfall-->
                         <androidx.cardview.widget.CardView
                             android:layout_width="260dp"
                             android:layout_height="180dp"
@@ -558,15 +575,31 @@
                                     android:layout_height="match_parent"
                                     android:background="#44000000" />
 
-                                <TextView
-                                    android:layout_width="wrap_content"
+                                <LinearLayout
+                                    android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="bottom|start"
-                                    android:padding="12dp"
-                                    android:text="Air Terjun"
-                                    android:textColor="#FFFFFF"
-                                    android:textSize="18sp"
-                                    android:textStyle="bold" />
+                                    android:layout_gravity="bottom"
+                                    android:orientation="vertical"
+                                    android:padding="12dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Oenesu Waterfall"
+                                        android:textColor="#FFFFFF"
+                                        android:fontFamily="@font/montserrat_bold"
+                                        android:textSize="18sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Manggarai Barat  ★ 4.8"
+                                        android:textColor="#FFFFFF"
+                                        android:fontFamily="@font/inter"
+                                        android:textSize="12sp" />
+
+                                </LinearLayout>
 
                             </FrameLayout>
 
