@@ -1,6 +1,7 @@
-package com.example.komoora
+package com.example.komoora.data
 
 import androidx.annotation.DrawableRes
+import com.example.komoora.R
 
 data class Destination(
     val id: String,

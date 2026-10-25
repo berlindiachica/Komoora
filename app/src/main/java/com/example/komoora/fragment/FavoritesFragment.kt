@@ -1,4 +1,4 @@
-package com.example.komoora
+package com.example.komoora.fragment
 
 import android.os.Bundle
 import android.view.LayoutInflater

@@ -1,12 +1,13 @@
-package com.example.komoora
+package com.example.komoora.activity
 
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.komoora.data.DestinationData
 import com.example.komoora.databinding.ActivityDetailPageBinding
 
-class DetailPage : AppCompatActivity() {
+class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailPageBinding
     private var isFavorite = false

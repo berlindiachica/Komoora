@@ -1,5 +1,4 @@
-
-package com.example.komoora
+package com.example.komoora.fragment
 
 import android.content.res.ColorStateList
 import android.graphics.Color
@@ -11,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
 import androidx.fragment.app.Fragment
+import com.example.komoora.data.DestinationNavigation
 import com.example.komoora.databinding.FragmentExplorationBinding
 
 class ExploreFragment : Fragment() {

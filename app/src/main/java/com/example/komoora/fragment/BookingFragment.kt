@@ -1,11 +1,16 @@
-package com.example.komoora
+package com.example.komoora.fragment
 
+import android.R
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
+import com.example.komoora.data.DestinationData
+import com.example.komoora.data.DestinationNavigation
+import com.example.komoora.data.TourPackage
+import com.example.komoora.adapter.TourPackageAdapter
 import com.example.komoora.databinding.FragmentBookingBinding
 
 class BookingFragment : Fragment() {
@@ -43,7 +48,7 @@ class BookingFragment : Fragment() {
 
         val simpleAdapter = ArrayAdapter(
             requireContext(),
-            android.R.layout.simple_list_item_1,
+            R.layout.simple_list_item_1,
             destinations
         )
 
@@ -71,35 +76,35 @@ class BookingFragment : Fragment() {
                 name = "Komodo Island",
                 location = "Manggarai Barat",
                 rating = "4.8",
-                imageResId = R.drawable.recommend_komodo
+                imageResId = com.example.komoora.R.drawable.recommend_komodo
             ),
             TourPackage(
                 id = "pink_beach",
                 name = "Pink Beach",
                 location = "Manggarai Barat",
                 rating = "4.7",
-                imageResId = R.drawable.pink_beach
+                imageResId = com.example.komoora.R.drawable.pink_beach
             ),
             TourPackage(
                 id = "oenesu_waterfall",
                 name = "Oenesu Waterfall",
                 location = "Kupang",
                 rating = "4.6",
-                imageResId = R.drawable.recommend_waterfall
+                imageResId = com.example.komoora.R.drawable.recommend_waterfall
             ),
             TourPackage(
                 id = "waerebo_village",
                 name = "Waerebo Village",
                 location = "Manggarai",
                 rating = "4.8",
-                imageResId = R.drawable.recommend_waerebo
+                imageResId = com.example.komoora.R.drawable.recommend_waerebo
             ),
             TourPackage(
                 id = "labuan_bajo",
                 name = "Labuan Bajo",
                 location = "Manggarai Barat",
                 rating = "4.7",
-                imageResId = R.drawable.recommend_labuan_bajo
+                imageResId = com.example.komoora.R.drawable.recommend_labuan_bajo
             )
         )
 

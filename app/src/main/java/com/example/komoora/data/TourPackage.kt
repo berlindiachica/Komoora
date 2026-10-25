@@ -1,4 +1,4 @@
-package com.example.komoora
+package com.example.komoora.data
 
 data class TourPackage(
     val id: String,

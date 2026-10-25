@@ -1,11 +1,8 @@
-package com.example.komoora
+package com.example.komoora.activity
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.lifecycle.lifecycleScope
 import com.example.komoora.databinding.ActivitySplashScreenBinding
 import kotlinx.coroutines.delay
@@ -29,7 +26,7 @@ class SplashScreenActivity : AppCompatActivity() {
             val target = if (isLogin) {
                 BaseActivity::class.java
             } else {
-                LandingPage::class.java
+                LandingActivity::class.java
             }
 
             val intent = Intent(this@SplashScreenActivity, target)

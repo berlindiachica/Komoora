@@ -1,9 +1,14 @@
-
-package com.example.komoora
+package com.example.komoora.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.komoora.fragment.BookingFragment
+import com.example.komoora.fragment.ExploreFragment
+import com.example.komoora.fragment.FavoritesFragment
+import com.example.komoora.fragment.HomeFragment
+import com.example.komoora.fragment.ProfileFragment
+import com.example.komoora.R
 import com.example.komoora.databinding.ActivityBaseBinding
 
 class BaseActivity : AppCompatActivity() {

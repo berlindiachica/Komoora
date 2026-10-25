@@ -1,16 +1,18 @@
-package com.example.komoora
+package com.example.komoora.fragment
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.example.komoora.data.DestinationNavigation
+import com.example.komoora.R
+import com.example.komoora.activity.LoginActivity
 import com.example.komoora.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {
@@ -53,7 +55,7 @@ class HomeFragment : Fragment() {
             }
         }
 
-        // Membuka halaman DetailPage
+        // Membuka halaman DetailActivity
         binding.cardLabuanBajo.setOnClickListener {
             DestinationNavigation.openDetail(
                 requireContext(),
@@ -90,17 +92,17 @@ class HomeFragment : Fragment() {
                 val sharedPref = requireContext()
                     .getSharedPreferences(
                         "user_pref",
-                        android.content.Context.MODE_PRIVATE
+                        Context.MODE_PRIVATE
                     )
 
                 sharedPref.edit()
                     .putBoolean("isLogin", false)
                     .apply()
 
-                // Kembali ke LoginPage
+                // Kembali ke LoginActivity
                 val intent = Intent(
                     requireContext(),
-                    LoginPage::class.java
+                    LoginActivity::class.java
                 )
 
                 intent.flags =
