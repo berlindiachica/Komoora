@@ -14,6 +14,9 @@ import com.example.komoora.data.DestinationNavigation
 import com.example.komoora.R
 import com.example.komoora.activity.LoginActivity
 import com.example.komoora.databinding.FragmentHomeBinding
+import com.example.komoora.activity.TutorialActivity
+import kotlin.jvm.java
+
 
 class HomeFragment : Fragment() {
 
@@ -42,15 +45,33 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Toolbar dan menu titik tiga
+        // Toolbar dan menu Guide serta Logout
         binding.toolbar.title = ""
         binding.toolbar.inflateMenu(R.menu.home_menu)
 
+        binding.toolbar.menu
+            .findItem(R.id.action_tutorial)
+            ?.icon
+            ?.mutate()
+            ?.setTint(Color.WHITE)
+
         binding.toolbar.setOnMenuItemClickListener { item ->
             when (item.itemId) {
+
+                R.id.action_tutorial -> {
+                    val intent = Intent(
+                        requireContext(),
+                        TutorialActivity::class.java
+                    )
+                    startActivity(intent)
+                    true
+                }
+
                 R.id.action_logout -> {
                     tampilkanDialogLogout()
                     true
                 }
+
                 else -> false
             }
         }

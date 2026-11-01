@@ -2,6 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Tombol Guide -->
+    <item
+        android:id="@+id/action_tutorial"
+        android:icon="@drawable/ic_tutorial"
+        android:title="Guide"
+        app:showAsAction="ifRoom" />
+
+    <!-- Menu Logout -->
     <item
         android:id="@+id/action_logout"
         android:title="Log Out"

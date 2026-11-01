@@ -89,89 +89,57 @@
                 android:paddingEnd="18dp"
                 android:paddingBottom="24dp">
 
+
                 <!-- Kategori -->
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:scrollbars="none"
-                    android:fillViewport="false">
+                    android:scrollbars="none">
 
-                    <LinearLayout
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/chipGroupFilter"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
+                        app:singleSelection="true">
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnAll"
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipAll"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp"
-                            android:minWidth="92dp"
-                            android:text="All"
-                            android:fontFamily="@font/inter"
-                            android:textAllCaps="false"
-                            android:textSize="16sp"
-                            android:textColor="#FFFFFF"
-                            app:cornerRadius="32dp"
-                            app:backgroundTint="#0D3A84" />
+                            android:layout_height="wrap_content"
+                            android:checked="true"
+                            android:text="All" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnBeach"
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipBeach"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp"
-                            android:layout_marginStart="10dp"
-                            android:minWidth="112dp"
-                            android:text="Beach"
-                            android:textAllCaps="false"
-                            android:textSize="16sp"
-                            android:fontFamily="@font/inter"
-                            android:textColor="#5578A8"
-                            app:cornerRadius="32dp"
-                            app:backgroundTint="#DCDCDC"/>
+                            android:layout_height="wrap_content"
+                            android:text="Beach" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnIsland"
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipIsland"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp"
-                            android:layout_marginStart="10dp"
-                            android:minWidth="112dp"
-                            android:fontFamily="@font/inter"
-                            android:text="Island"
-                            android:textAllCaps="false"
-                            android:textSize="16sp"
-                            android:textColor="#5578A8"
-                            app:cornerRadius="32dp"
-                            app:backgroundTint="#DCDCDC" />
+                            android:layout_height="wrap_content"
+                            android:text="Island" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnVillage"
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipNature"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp"
-                            android:layout_marginStart="10dp"
-                            android:minWidth="112dp"
-                            android:text="Village"
-                            android:textAllCaps="false"
-                            android:fontFamily="@font/inter"
-                            android:textSize="16sp"
-                            android:textColor="#5578A8"
-                            app:cornerRadius="32dp"
-                            app:backgroundTint="#DCDCDC" />
+                            android:layout_height="wrap_content"
+                            android:text="Nature" />
 
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btnHotel"
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/chipVillage"
+                            style="@style/Widget.MaterialComponents.Chip.Filter"
                             android:layout_width="wrap_content"
-                            android:layout_height="52dp"
-                            android:layout_marginStart="10dp"
-                            android:minWidth="100dp"
-                            android:fontFamily="@font/inter"
-                            android:text="Hotel"
-                            android:textAllCaps="false"
-                            android:textSize="16sp"
-                            android:textColor="#5578A8"
-                            app:cornerRadius="32dp"
-                            app:backgroundTint="#DCDCDC" />
+                            android:layout_height="wrap_content"
+                            android:text="Village" />
 
-                    </LinearLayout>
+                    </com.google.android.material.chip.ChipGroup>
+
                 </HorizontalScrollView>
 
                 <TextView

@@ -46,4 +46,6 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(libs.androidx.junit)
+    implementation("androidx.viewpager2:viewpager2:1.1.0")
+    implementation("com.tbuonomo:dotsindicator:5.1.0")
 }
