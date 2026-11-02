@@ -16,7 +16,8 @@ import com.example.komoora.activity.LoginActivity
 import com.example.komoora.databinding.FragmentHomeBinding
 import com.example.komoora.activity.TutorialActivity
 import kotlin.jvm.java
-
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class HomeFragment : Fragment() {
 
@@ -43,6 +44,32 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
+
+
+        val originalToolbarHeight = binding.toolbar.layoutParams.height
+
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { _, insets ->
+
+            val statusBarHeight = insets.getInsets(
+                WindowInsetsCompat.Type.statusBars()
+            ).top
+
+            binding.toolbar.layoutParams.height =
+                originalToolbarHeight + statusBarHeight
+
+            binding.toolbar.setPadding(
+                0,
+                statusBarHeight,
+                0,
+                0
+            )
+
+            binding.toolbar.requestLayout()
+
+            insets
+        }
+
+        ViewCompat.requestApplyInsets(binding.root)
 
         // Toolbar dan menu titik tiga
         // Toolbar dan menu Guide serta Logout
