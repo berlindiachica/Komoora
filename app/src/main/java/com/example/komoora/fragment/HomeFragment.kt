@@ -16,7 +16,7 @@ import com.example.komoora.activity.LoginActivity
 import com.example.komoora.databinding.FragmentHomeBinding
 import com.example.komoora.activity.TutorialActivity
 import kotlin.jvm.java
-
+import com.example.komoora.activity.KategoriActivity
 
 class HomeFragment : Fragment() {
 
@@ -100,8 +100,48 @@ class HomeFragment : Fragment() {
                     "Tambahkan ke favorit"
                 }
         }
-    }
+        // Nature
+        binding.btnNature.setOnClickListener {
+            bukaKategori(0)
+        }
 
+        // Hotel
+        binding.btnHotel.setOnClickListener {
+            bukaKategori(1)
+        }
+
+        // Culinary
+        binding.btnCulinary.setOnClickListener {
+            bukaKategori(2)
+        }
+
+        // Culture
+        binding.btnCulture.setOnClickListener {
+            bukaKategori(3)
+        }
+
+        // Souvenir
+        binding.btnSouvenir.setOnClickListener {
+            bukaKategori(4)
+        }
+
+    }
+    // Membuka halaman kategori sesuai tombol
+    private fun bukaKategori(position: Int) {
+
+        val intent = Intent(
+            requireContext(),
+            KategoriActivity::class.java
+        )
+
+        // Mengirim posisi kategori
+        intent.putExtra(
+            "selected_tab",
+            position
+        )
+
+        startActivity(intent)
+    }
     // Dialog konfirmasi Logout
     private fun tampilkanDialogLogout() {
         AlertDialog.Builder(requireContext())
