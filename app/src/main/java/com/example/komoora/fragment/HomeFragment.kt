@@ -19,6 +19,11 @@ import kotlin.jvm.java
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.komoora.activity.KategoriActivity
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.example.komoora.data.AppDatabase
+import com.example.komoora.data.entity.FavoriteEntity
+import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
 
@@ -26,6 +31,7 @@ class HomeFragment : Fragment() {
     private val binding get() = _binding!!
 
     private var isFavorite = false
+    private lateinit var db: AppDatabase
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -45,7 +51,7 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ) {
         super.onViewCreated(view, savedInstanceState)
-
+        db = AppDatabase.getInstance(requireContext())
 
         val originalToolbarHeight = binding.toolbar.layoutParams.height
 
@@ -112,22 +118,29 @@ class HomeFragment : Fragment() {
             )
         }
 
-        // Tombol favorit
+//        // Tombol favorit
+//        binding.btnFavoriteLabuanBajo.setOnClickListener {
+//            isFavorite = !isFavorite
+//
+//            binding.btnFavoriteLabuanBajo.imageTintList =
+//                ColorStateList.valueOf(
+//                    if (isFavorite) Color.RED else Color.GRAY
+//                )
+//
+//            binding.btnFavoriteLabuanBajo.contentDescription =
+//                if (isFavorite) {
+//                    "Hapus dari favorit"
+//                } else {
+//                    "Tambahkan ke favorit"
+//                }
+//        }
+
+        binding.btnFavoriteLabuanBajo.isEnabled = false
+
         binding.btnFavoriteLabuanBajo.setOnClickListener {
-            isFavorite = !isFavorite
-
-            binding.btnFavoriteLabuanBajo.imageTintList =
-                ColorStateList.valueOf(
-                    if (isFavorite) Color.RED else Color.GRAY
-                )
-
-            binding.btnFavoriteLabuanBajo.contentDescription =
-                if (isFavorite) {
-                    "Hapus dari favorit"
-                } else {
-                    "Tambahkan ke favorit"
-                }
+            toggleFavoriteLabuanBajo()
         }
+
         // Nature
         binding.btnNature.setOnClickListener {
             bukaKategori(0)
@@ -154,6 +167,122 @@ class HomeFragment : Fragment() {
         }
 
     }
+
+    private fun updateFavoriteIcon() {
+
+        val color = if (isFavorite) {
+            Color.RED
+        } else {
+            Color.GRAY
+        }
+
+        binding.btnFavoriteLabuanBajo.imageTintList =
+            ColorStateList.valueOf(color)
+
+        binding.btnFavoriteLabuanBajo.contentDescription =
+            if (isFavorite) {
+                "Hapus dari favorit"
+            } else {
+                "Tambahkan ke favorit"
+            }
+    }
+
+    private fun checkFavoriteStatus() {
+
+        binding.btnFavoriteLabuanBajo.isEnabled = false
+
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            try {
+                // Memeriksa data Labuan Bajo di Room
+                isFavorite = db.favoriteDao().isFavorite(
+                    "labuan_bajo"
+                )
+
+                // Memperbarui warna ikon
+                updateFavoriteIcon()
+
+            } catch (e: Exception) {
+
+                Toast.makeText(
+                    requireContext(),
+                    "Gagal memeriksa status favorit",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } finally {
+                binding.btnFavoriteLabuanBajo.isEnabled = true
+            }
+        }
+    }
+
+    private fun toggleFavoriteLabuanBajo() {
+
+        binding.btnFavoriteLabuanBajo.isEnabled = false
+
+        viewLifecycleOwner.lifecycleScope.launch {
+
+            try {
+                // Memeriksa data yang ada di Room
+                val favorite = db.favoriteDao().getByKey(
+                    "labuan_bajo"
+                )
+
+                if (favorite == null) {
+
+                    // Jika belum disimpan, tambahkan
+                    val newFavorite = FavoriteEntity(
+                        destinationKey = "labuan_bajo",
+                        destinationName = "Labuan Bajo",
+                        location = "Manggarai Barat, Flores",
+                        category = "Nature",
+                        imageName = "recommend_labuan_bajo"
+                    )
+
+                    db.favoriteDao().insert(newFavorite)
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Labuan Bajo ditambahkan ke Favorites",
+                        Toast.LENGTH_SHORT
+                    ).show()
+
+                } else {
+
+                    // Jika sudah disimpan, hapus
+                    db.favoriteDao().delete(favorite)
+
+                    Toast.makeText(
+                        requireContext(),
+                        "Labuan Bajo dihapus dari Favorites",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+
+                // Membaca kembali status sebenarnya dari Room
+                isFavorite = db.favoriteDao().isFavorite(
+                    "labuan_bajo"
+                )
+
+                updateFavoriteIcon()
+
+            } catch (e: Exception) {
+
+                Toast.makeText(
+                    requireContext(),
+                    "Gagal memperbarui Favorites",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+            } finally {
+                binding.btnFavoriteLabuanBajo.isEnabled = true
+            }
+        }
+    }
+
+
+
+
     // Membuka halaman kategori sesuai tombol
     private fun bukaKategori(position: Int) {
 
@@ -205,6 +334,15 @@ class HomeFragment : Fragment() {
             }
             .show()
     }
+
+    override fun onResume() {
+        super.onResume()
+
+        if (_binding != null) {
+            checkFavoriteStatus()
+        }
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

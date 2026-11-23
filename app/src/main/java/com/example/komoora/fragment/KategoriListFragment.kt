@@ -1,4 +1,3 @@
-
 package com.example.komoora.fragment
 
 import android.os.Bundle
@@ -7,31 +6,35 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.komoora.R
 import com.example.komoora.adapter.KategoriItemAdapter
+import com.example.komoora.data.AppDatabase
+import com.example.komoora.data.FavoriteManager
 import com.example.komoora.data.KategoriItemModel
+import com.example.komoora.data.entity.FavoriteEntity
 import com.example.komoora.databinding.FragmentKategoriListBinding
+import kotlinx.coroutines.launch
+import java.util.Locale
 
 class KategoriListFragment : Fragment() {
 
     private var _binding: FragmentKategoriListBinding? = null
     private val binding get() = _binding!!
 
-    companion object {
+    private lateinit var favoriteManager: FavoriteManager
+    private var kategoriAdapter: KategoriItemAdapter? = null
 
+    companion object {
         private const val ARG_TAB_INDEX = "tab_index"
 
         fun newInstance(position: Int): KategoriListFragment {
-
-            val fragment = KategoriListFragment()
-
-            val args = Bundle()
-            args.putInt(ARG_TAB_INDEX, position)
-
-            fragment.arguments = args
-
-            return fragment
+            return KategoriListFragment().apply {
+                arguments = Bundle().apply {
+                    putInt(ARG_TAB_INDEX, position)
+                }
+            }
         }
     }
 
@@ -40,52 +43,109 @@ class KategoriListFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
-        _binding = FragmentKategoriListBinding.inflate(
-            inflater,
-            container,
-            false
-        )
-
+        _binding = FragmentKategoriListBinding.inflate(inflater, container, false)
         return binding.root
     }
 
-    override fun onViewCreated(
-        view: View,
-        savedInstanceState: Bundle?
-    ) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Mengambil posisi kategori yang dipilih
-        val tabIndex = arguments?.getInt(
-            ARG_TAB_INDEX,
-            0
-        ) ?: 0
-
-        // Mengambil daftar berdasarkan kategori
+        val tabIndex = arguments?.getInt(ARG_TAB_INDEX) ?: 0
         val itemList = getCategoryItems(tabIndex)
+        favoriteManager = FavoriteManager(requireContext())
 
-        // Membuat adapter RecyclerView
-        val kategoriAdapter = KategoriItemAdapter(
-            itemList
-        ) { selectedItem ->
+        // Klik kartu tetap seperti sebelumnya; klik hati khusus mengubah favorit.
+        val adapter = KategoriItemAdapter(
+            itemList = itemList,
+            onItemClick = { selectedItem ->
+                Toast.makeText(
+                    requireContext(),
+                    "Anda memilih ${selectedItem.name}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            },
+            onFavoriteClick = { selectedItem ->
+                toggleFavorite(selectedItem, tabIndex)
+            }
+        )
+        kategoriAdapter = adapter
 
-            Toast.makeText(
-                requireContext(),
-                "Anda memilih ${selectedItem.name}",
-                Toast.LENGTH_SHORT
-            ).show()
-        }
-
-        // Menampilkan daftar dalam Grid 2 kolom
         binding.rvCategoryItems.apply {
+            layoutManager = GridLayoutManager(requireContext(), 2)
+            this.adapter = adapter
+        }
+    }
 
-            layoutManager = GridLayoutManager(
-                requireContext(),
-                2
-            )
+    // Dipanggil lagi ketika pengguna kembali dari halaman Favorites.
+    override fun onResume() {
+        super.onResume()
+        if (_binding != null && ::favoriteManager.isInitialized) {
+            refreshFavoriteCategory()
+        }
+    }
 
-            adapter = kategoriAdapter
+    private fun toggleFavorite(item: KategoriItemModel, tabIndex: Int) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val category = when (tabIndex) {
+                    0 -> "Nature"
+                    1 -> "Hotel"
+                    2 -> "Culinary"
+                    3 -> "Culture"
+                    4 -> "Souvenir"
+                    else -> "Nature"
+                }
+
+                // Kunci stabil: Labuan Bajo di Home dan kategori sama-sama labuan_bajo.
+                val key = item.name.trim()
+                    .lowercase(Locale.ROOT)
+                    .replace(Regex("[^a-z0-9]+"), "_")
+                    .trim('_')
+
+                val imageName = resources.getResourceEntryName(item.imageResId)
+                val favorite = FavoriteEntity(
+                    destinationKey = key,
+                    destinationName = item.name,
+                    location = item.description,
+                    category = category,
+                    imageName = imageName
+                )
+
+                val isSaved = favoriteManager.toggleFavorite(favorite)
+                Toast.makeText(
+                    requireContext(),
+                    if (isSaved) "${item.name} disimpan ke Favorites"
+                    else "${item.name} dihapus dari Favorites",
+                    Toast.LENGTH_SHORT
+                ).show()
+                refreshFavoriteCategory()
+            } catch (e: Exception) {
+                Toast.makeText(
+                    requireContext(),
+                    "Gagal memperbarui Favorites",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        }
+    }
+
+    private fun refreshFavoriteCategory() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val favoriteNames = AppDatabase.getInstance(requireContext())
+                    .favoriteDao()
+                    .getAll()
+                    .map { it.destinationName }
+                    .toSet()
+
+                kategoriAdapter?.setFavoriteNames(favoriteNames)
+            } catch (e: Exception) {
+                Toast.makeText(
+                    requireContext(),
+                    "Gagal memuat status favorit",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
@@ -241,7 +301,9 @@ class KategoriListFragment : Fragment() {
     }
 
     override fun onDestroyView() {
-        super.onDestroyView()
+        binding.rvCategoryItems.adapter = null
+        kategoriAdapter = null
         _binding = null
+        super.onDestroyView()
     }
 }

@@ -10,6 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageButton
+import android.widget.Toast
+import androidx.lifecycle.lifecycleScope
+import com.example.komoora.data.FavoriteManager
+import com.example.komoora.data.entity.FavoriteEntity
+import kotlinx.coroutines.launch
 import androidx.fragment.app.Fragment
 import com.example.komoora.data.DestinationNavigation
 import com.example.komoora.databinding.FragmentExplorationBinding
@@ -26,6 +31,8 @@ class ExploreFragment : Fragment() {
 
     // Daftar Chip kategori
     private lateinit var categoryChips: List<Chip>
+    private lateinit var favoriteManager: FavoriteManager
+    private var favoriteButtons: List<Pair<ImageButton, FavoriteEntity>> = emptyList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -107,13 +114,56 @@ class ExploreFragment : Fragment() {
             }
         )
 
-        // 5. Tombol favorit pada setiap kartu
-        setupFavoriteButton(binding.btnFavoriteKomodo)
-        setupFavoriteButton(binding.btnFavoritePinkBeach)
-        setupFavoriteButton(binding.btnFavoriteWaterfall)
-        setupFavoriteButton(binding.btnFavoriteWaerebo)
-        setupFavoriteButton(binding.btnFavoriteLabuanBajo)
-        setupFavoriteButton(binding.btnFavoriteCave)
+        // 5. Seluruh tombol hati terhubung ke Room Database
+        favoriteManager = FavoriteManager(requireContext())
+        favoriteButtons = listOf(
+            binding.btnFavoriteKomodo to FavoriteEntity(
+                destinationKey = "pulau_komodo",
+                destinationName = "Pulau Komodo",
+                location = "Taman Nasional Komodo",
+                category = "Nature",
+                imageName = "recommend_komodo"
+            ),
+            binding.btnFavoritePinkBeach to FavoriteEntity(
+                destinationKey = "pink_beach",
+                destinationName = "Pink Beach",
+                location = "Manggarai Barat, Flores",
+                category = "Nature",
+                // Sesuaikan dengan nama drawable foto Pink Beach di fragment_exploration.xml
+                imageName = "pink_beach"
+            ),
+            binding.btnFavoriteWaterfall to FavoriteEntity(
+                destinationKey = "oenesu_waterfall",
+                destinationName = "Oenesu Waterfall",
+                location = "Kupang, NTT",
+                category = "Nature",
+                imageName = "recommend_waterfall"
+            ),
+            binding.btnFavoriteWaerebo to FavoriteEntity(
+                destinationKey = "desa_adat_wae_rebo",
+                destinationName = "Desa Adat Wae Rebo",
+                location = "Manggarai, Flores",
+                category = "Culture",
+                imageName = "recommend_waerebo"
+            ),
+            binding.btnFavoriteLabuanBajo to FavoriteEntity(
+                destinationKey = "labuan_bajo",
+                destinationName = "Labuan Bajo",
+                location = "Manggarai Barat, Flores",
+                category = "Nature",
+                imageName = "recommend_labuan_bajo"
+            ),
+            binding.btnFavoriteCave to FavoriteEntity(
+                destinationKey = "bolok_crystal_cave",
+                destinationName = "Bolok Crystal Cave",
+                location = "Kupang Barat, NTT",
+                category = "Nature",
+                imageName = "recommend_cave"
+            )
+        )
+        favoriteButtons.forEach { (button, destination) ->
+            setupFavoriteButton(button, destination)
+        }
 
         // 6. Menampilkan semua destinasi saat pertama dibuka
         filterDestinations()
@@ -242,39 +292,85 @@ class ExploreFragment : Fragment() {
         }
     }
 
-    // 10. Mengatur tombol favorit
-    private fun setupFavoriteButton(button: ImageButton) {
-
-        var isFavorite = false
-
-        button.imageTintList =
-            ColorStateList.valueOf(Color.LTGRAY)
+    // 10. Menyimpan dan menghapus favorit lewat Room
+    private fun setupFavoriteButton(
+        button: ImageButton,
+        destination: FavoriteEntity
+    ) {
+        button.isEnabled = false
+        updateHeart(button, false)
 
         button.setOnClickListener {
-
-            isFavorite = !isFavorite
-
-            button.imageTintList =
-                ColorStateList.valueOf(
-                    if (isFavorite) {
-                        Color.RED
-                    } else {
-                        Color.LTGRAY
-                    }
-                )
-
-            button.contentDescription =
-                if (isFavorite) {
-                    "Hapus dari favorit"
-                } else {
-                    "Tambahkan ke favorit"
+            button.isEnabled = false
+            viewLifecycleOwner.lifecycleScope.launch {
+                try {
+                    val saved = favoriteManager.toggleFavorite(destination)
+                    updateHeart(button, saved)
+                    Toast.makeText(
+                        requireContext(),
+                        if (saved) "${destination.destinationName} disimpan ke Favorites"
+                        else "${destination.destinationName} dihapus dari Favorites",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    refreshExploreHearts()
+                } catch (e: Exception) {
+                    Toast.makeText(
+                        requireContext(),
+                        "Gagal memperbarui Favorites",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } finally {
+                    button.isEnabled = true
                 }
+            }
+        }
+    }
+
+    private fun updateHeart(button: ImageButton, saved: Boolean) {
+        button.imageTintList = ColorStateList.valueOf(
+            if (saved) Color.RED else Color.LTGRAY
+        )
+        button.contentDescription =
+            if (saved) "Hapus dari favorit" else "Tambahkan ke favorit"
+    }
+
+    // Sinkronkan dengan favorit dari Home, Kategori, dan halaman Favorites
+    private fun refreshExploreHearts() {
+        if (_binding == null || !::favoriteManager.isInitialized) return
+        viewLifecycleOwner.lifecycleScope.launch {
+            try {
+                val keys = com.example.komoora.data.AppDatabase
+                    .getInstance(requireContext())
+                    .favoriteDao()
+                    .getAll()
+                    .map { it.destinationKey }
+                    .toSet()
+                favoriteButtons.forEach { (button, destination) ->
+                    updateHeart(button, destination.destinationKey in keys)
+                    button.isEnabled = true
+                }
+            } catch (e: Exception) {
+                Toast.makeText(
+                    requireContext(),
+                    "Gagal memuat status favorit",
+                    Toast.LENGTH_SHORT
+                ).show()
+                favoriteButtons.forEach { (button, _) -> button.isEnabled = true }
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        if (_binding != null && ::favoriteManager.isInitialized) {
+            refreshExploreHearts()
         }
     }
 
     // 11. Membersihkan ViewBinding ketika Fragment dihancurkan
     override fun onDestroyView() {
-        super.onDestroyView()
+        favoriteButtons = emptyList()
         _binding = null
+        super.onDestroyView()
     }
 }

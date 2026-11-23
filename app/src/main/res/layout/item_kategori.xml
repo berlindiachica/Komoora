@@ -13,7 +13,7 @@
         android:layout_height="wrap_content"
         android:padding="8dp">
 
-        <!-- Gambar atau ikon item -->
+        <!-- GAMBAR ATAU IKON ITEM -->
         <ImageView
             android:id="@+id/imgCategory"
             android:layout_width="0dp"
@@ -24,7 +24,24 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Nama item -->
+        <!-- TOMBOL FAVORITE -->
+        <ImageButton
+            android:id="@+id/btnFavoriteCategory"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_favorite_category"
+            android:src="@drawable/ic_heart"
+            android:padding="9dp"
+            android:scaleType="fitCenter"
+            android:elevation="6dp"
+            android:contentDescription="Tambahkan ke favorit"
+            app:tint="#9AA4B2"
+            app:layout_constraintTop_toTopOf="@id/imgCategory"
+            app:layout_constraintEnd_toEndOf="@id/imgCategory" />
+
+        <!-- NAMA ITEM -->
         <TextView
             android:id="@+id/tvCategoryName"
             android:layout_width="0dp"
@@ -41,7 +58,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Keterangan item -->
+        <!-- KETERANGAN ITEM -->
         <TextView
             android:id="@+id/tvCategoryDescription"
             android:layout_width="0dp"
